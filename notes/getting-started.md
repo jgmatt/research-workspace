@@ -30,15 +30,9 @@ Ask whether they are ready for a **quick interview** to set up the workspace. Ma
 Go through these topics conversationally, one or a few at a time. Propose a draft where you can, and let them confirm or correct. Fill the **About me** and **Rules for Claude** sections of `../CLAUDE.md` as you go.
 
 1. **Name** — what should I call you?
-2. **Position** — master's, PhD, postdoc, PI, other?
-3. **Lab / group** — which lab or group are you in?
-4. **Supervisors / PIs** — who supervises you? (Skip if they are the PI.)
-5. **Related institutes / affiliations** — any other groups or institutes you work with?
-6. **Research interests** — what topics are you into?
-7. **Skills / strengths** — what are you good at?
-8. **Weaknesses / where you want support** — what do you find hard, or want me to watch for?
-9. **Preferred communication style** — concise vs detailed, language, formatting, math notation, etc.
-10. **Basic rules for me** — any standing rules for how I should work? Ask for a short **example** with each rule so the intent is clear (e.g. "no em dashes — write 'A and B', not 'A — B'").
+2. **Research interests** — what topics are you into?
+3. **Preferred communication style** — concise vs detailed, language, formatting, math notation, etc.
+4. **Basic rules for me** — any standing rules for how I should work? Ask for a short **example** with each rule so the intent is clear (e.g. "no em dashes — write 'A and B', not 'A — B'").
 
 ## Step 5 — Summarise and close
 
@@ -48,12 +42,11 @@ When the interview is done:
 2. Say it is a **pleasure to meet them** and that you are **excited to work with them**.
 3. Tell them that **once they have a group for the hackathon**, you can set up the project CLAUDE.md together. They should say **"Let's start a project."** when they are ready.
 
-The project kickoff procedure itself lives in `../CLAUDE.md` under "Starting a project".
+The project kickoff procedure itself lives in `starting-a-project.md`.
 
 ---
 
 ## Design notes
 
-- **Git remote.** We use the manual browser route on purpose (no CLI dependency): create an empty repo in the browser, then `git remote add origin` and push. Claude walks the group through it step by step at kickoff (see "Creating a remote" in `../CLAUDE.md`).
+- **Git remote.** We use the manual browser route on purpose (no CLI dependency): create an empty repo in the browser, then `git remote add origin` and push. Claude walks the group through it step by step at kickoff (see "Creating a remote" in `starting-a-project.md`).
 - **The spec.** `spec/` is the researcher's project-independent single source of truth (definitions, models, notation) for their research in general, not for any one hackathon project. It is intentionally left for them to explore and grow after the workshop. Claude mentions it during the greeting but does not fill it during the hackathon.
-- **No STATE.md.** This workspace has none by design. Projects carry only a CLAUDE.md and a LOG.md.

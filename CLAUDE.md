@@ -18,13 +18,7 @@
 <!-- SCAFFOLD. Empty until the first session. Do NOT invent content — it is filled by the getting-started interview. -->
 
 - **Name / what to call me:** <name>
-- **Position:** <e.g. master's student, PhD student, postdoc, PI>
-- **Lab / group:** <lab>
-- **Supervisors / PIs:** <names, or "I am the PI">
-- **Related institutes / affiliations:** <list>
 - **Research interests:** <topics>
-- **Skills / strengths:** <what I am good at>
-- **Weaknesses / where I want support:** <what I find hard>
 - **Preferred communication style:** <e.g. concise, no fluff; detailed; English; math in LaTeX>
 
 ## Rules for Claude
@@ -38,12 +32,29 @@
 
 Project-based research workspace for the AI in Practice hackathon.
 
-- `CLAUDE.md` — this file: the entry point and the researcher's profile.
-- `spec/` — the researcher's project-independent source of truth (definitions, models, notation). Not part of the hackathon. See `notes/the-spec.md`.
-- `references/` — `references.bib` with all sources.
-- `skills/` — reusable procedures (e.g. a minimal literature review).
-- `notes/` — workspace notes and the detailed procedures linked below.
-- `projects/` — one folder per project, each with its own `CLAUDE.md` and `LOG.md`. No STATE.md anywhere.
+```
+research-workspace/
+├── CLAUDE.md                     this file: entry point + researcher profile
+├── README.md                     overview and how to get started
+├── notes/
+│   ├── getting-started.md        procedure for the "Hi Claude, I'm <name>." trigger
+│   ├── starting-a-project.md     procedure for the "Let's start a project." trigger (incl. git remote)
+│   └── the-spec.md               what the spec is and how to compile it
+├── spec/
+│   ├── spec.typ                  project-independent source of truth (definitions, models, notation)
+│   └── spec.pdf                  compiled output
+├── references/
+│   └── references.bib            all sources
+├── skills/
+│   └── literature-review/
+│       └── SKILL.md              minimal, generic literature-review skill
+└── projects/                     one folder per project, created at kickoff
+    └── <group-name>/
+        ├── CLAUDE.md             project definition (group, topic, methods, research question)
+        └── LOG.md                append-only record of changes and decisions
+```
+
+Note: there is intentionally **no STATE.md** anywhere. The spec is not part of the hackathon (see `notes/the-spec.md`).
 
 ## Basic instructions
 
