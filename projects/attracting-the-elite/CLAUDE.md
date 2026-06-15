@@ -46,3 +46,6 @@ Preliminary: Under what conditions does type-segregation emerge naturally across
 ## Pointers
 - Log of changes and decisions: ./LOG.md
 - Sources: ../../references/references.bib
+
+## Codex
+- Active session: 019ecbe9-47ed-7392-a4f0-9072a27b6ffd

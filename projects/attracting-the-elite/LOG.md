@@ -2,6 +2,40 @@
 
 ---
 
+## 2026-06-15 -- Codex cross-check and synthesized LaTeX writeup
+
+**What happened:** Installed the Codex CLI (user npm prefix `~/.npm-global`; logged in via
+ChatGPT) and delegated the same modeling task to a fresh Codex session (gpt-5.5, xhigh).
+Codex wrote `model-codex.md` independently. Compared against my `model.md` and synthesized a
+single definitive writeup `model.tex` (compiled to `model.pdf`, ~12pp).
+
+**Codex cross-check caught three issues in my first draft (`model.md`):**
+- The follower game is NOT a potential game under the asymmetry ($\alpha_{HL}\neq\alpha_{LH}$
+  makes matrix $A$ asymmetric); my Lemma claiming a Rosenthal potential was wrong. Fixed:
+  work directly with allocations + Wardrop inequalities.
+- I dismissed the low-type invasion constraint (IC-L) too quickly. The correct lower bound is
+  $B_K=(\alpha_{HH}-\alpha_{LH})m_H/K$, and crucially a *small* $\alpha_{LH}$ (the asymmetry)
+  *raises* $B_K$, making the poor *harder* to keep out of premium resorts. So one-way aversion
+  helps via $\alpha_{HL}$ but hurts via the IC-L channel; feasibility needs $A_K\ge B_K$.
+- I omitted the pooling rent. Correct profit identity: $\Pi^S(K)-\Pi^P=\Delta W(K)+T^P-R_K$,
+  with screening rent $R_K=m_H(d-A_K)_+ + m_L(B_K-d)_+$.
+
+**Cleanest new results (now in model.tex):** generalized-price sandwich
+$B_K\le q_H-q_L\le A_K$; optimal split $K^\star/J=\sqrt{\alpha_{HH}}m_H/(\sqrt{\alpha_{HH}}m_H+\sqrt{\alpha_{LL}}m_L)$;
+at the optimum, sorting raises *surplus* iff $\alpha_{HL}+\alpha_{LH}>2\sqrt{\alpha_{HH}\alpha_{LL}}$,
+and the *same* product governs local stability of pooling
+($\alpha_{HH}\alpha_{LL}>\alpha_{HL}\alpha_{LH}$) -- under near one-way aversion pooling stays
+stable however large $\alpha_{HL}$ is, a sharp wrong-equilibrium trap.
+
+**Artifacts:** `model.md` (Claude v1), `model-codex.md` (Codex independent), `model.tex` +
+`model.pdf` (synthesis). Codex session UUID recorded in project `CLAUDE.md` under `## Codex`.
+
+**Next step:** Decide whether to push the non-collusive (competitive) pricing game as the
+headline result; formalize the capacity instrument repairing $A_K<B_K$; pin down basin of
+attraction for the trap.
+
+---
+
 ## 2026-06-15 -- First formal model: coordinated sorting under asymmetric peer congestion
 
 **What happened:** Wrote `model.md`, a self-contained model note answering the cartel

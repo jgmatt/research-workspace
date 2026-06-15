@@ -1,0 +1,577 @@
+\documentclass[11pt]{article}
+
+% ----------------------------------------------------------------------
+%  Attracting the Elite
+%  Coordinated Sorting of a Heterogeneous Tourist Population
+%  under an Asymmetric Peer-Congestion Externality
+%
+%  Synthesis of two independently developed derivations
+%  (Claude model.md + Codex model-codex.md), cross-checked.
+% ----------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+% --- theorem environments ---
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% --- notation macros ---
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\mH}{m_{H}}
+\newcommand{\mL}{m_{L}}
+\newcommand{\vH}{v_{H}}
+\newcommand{\vL}{v_{L}}
+\newcommand{\aHH}{\alpha_{HH}}
+\newcommand{\aHL}{\alpha_{HL}}
+\newcommand{\aLH}{\alpha_{LH}}
+\newcommand{\aLL}{\alpha_{LL}}
+\newcommand{\WP}{W^{P}}
+\newcommand{\WS}{W^{S}}
+\newcommand{\TP}{T^{P}}
+\newcommand{\PiP}{\Pi^{P}}
+\newcommand{\PiS}{\Pi^{S}}
+\newcommand{\wHP}{w_{H}^{P}}
+\newcommand{\wLP}{w_{L}^{P}}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\pos}[1]{\left(#1\right)_{+}}
+
+\title{\textbf{Attracting the Elite}\\[0.4em]
+\large Coordinated Sorting of a Heterogeneous Tourist Population\\
+under an Asymmetric Peer--Congestion Externality}
+\author{Attracting-the-Elite project}
+\date{June 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We study $J$ \emph{intrinsically identical} resorts facing a heterogeneous tourist
+population of two types: rich/high--value $(H)$ and poor/low--value $(L)$. Payoffs are
+composition--dependent: a visitor's utility falls in the mass of co--visitors of each type,
+and the central structural assumption is that the externality is \emph{asymmetric}, the rich
+strongly averse to crowding by the poor while the poor are nearly indifferent to the rich,
+$\aHL \gg \aLH$. We ask whether resorts that are otherwise identical can raise their
+\emph{joint} profit by coordinating on \emph{differentiated} prices that split the population
+by type, relative to a symmetric baseline in which all resorts post one price. The answer is
+yes, under a precise condition. We give an exact profit decomposition,
+$\PiS - \PiP = \Delta W + \TP - R$, separating three forces: cross--type congestion relief,
+own--type concentration cost, and the trade of the rent a common price must leave (the
+pooling rent $\TP$) for the screening rent $R$ required to separate types. The asymmetry
+plays a \emph{dual} role: $\aHL$ both creates real surplus and relaxes the high type's
+incentive constraint, which is the screening technology. We also show a countervailing force
+that informal accounts miss: a \emph{low} $\aLH$ makes the poor harder to keep out of premium
+resorts. At the optimal split, sorting raises total surplus iff
+$\aHL + \aLH > 2\sqrt{\aHH\,\aLL}$, and the same inequality governs the local instability of
+the pooled equilibrium, which links the profit result to a wrong--equilibrium trap.
+\end{abstract}
+
+\tableofcontents
+\bigskip
+
+% ======================================================================
+\section{Introduction}
+% ======================================================================
+
+Consider five ski resorts on comparable mountains, with comparable lifts, snow, and service.
+Nothing physical distinguishes them. Yet we routinely observe such clusters \emph{sorting}
+into a premium destination that serves a wealthy clientele at high prices and budget
+destinations that serve a price--sensitive mass market. Where does the differentiation come
+from when the product is identical?
+
+This note isolates one mechanism: an \emph{asymmetric peer externality}. Wealthy tourists
+dislike sharing a mountain with a large low--budget crowd, whereas low--budget tourists are
+largely indifferent to the presence of the wealthy, and may even be drawn to it. Under this
+asymmetry, a group of identical resorts can raise total profit by coordinating on a
+\emph{menu} of prices that sorts the two types across locations, even though no resort has any
+intrinsic advantage. The differentiation is created endogenously by the composition of who
+shows up.
+
+We keep three forces distinct throughout.
+\begin{enumerate}[label=(\roman*),leftmargin=2.4em]
+\item \textbf{Surplus creation.} Sorting physically separates the rich from the poor, deleting
+the cross--congestion cost that the rich bear under mixing. Because the poor barely mind being
+moved away from the rich, little or no offsetting loss arises, so the relief is a genuine
+surplus increase.
+\item \textbf{Screening.} For sorting to be self--enforcing, the rich must \emph{voluntarily}
+choose the expensive resort over the cheap, crowded one, and the poor must not invade the
+premium tier. The same distaste $\aHL$ that creates surplus also relaxes the high type's
+incentive constraint. The asymmetry is the screening device.
+\item \textbf{Rent accounting.} A single posted price must leave a rent to one type (the
+pooling rent $\TP$). Sorting recovers $\TP$ but must pay whatever screening rent $R$ is needed
+to separate the types. The profit comparison nets these against the concentration cost.
+\end{enumerate}
+
+\paragraph{Relation to the literature.}
+The model sits at the intersection of three strands. Congestion and population games
+(Rosenthal, 1973; Sandholm, 2010) and player--specific congestion (Milchtaich, 1996) supply
+the equilibrium notion but reduce the externality to scalar load. Club--good theory (Buchanan,
+1965; Scotchmer, 1994, 2002) captures composition preferences but is static and non--strategic
+on the provider side. Schelling (1971) has composition thresholds but no prices and no firms.
+Our contribution is to combine \emph{composition--dependent} payoffs with an \emph{asymmetric}
+cross--type derivative \emph{and} a strategic (here, colluding) provider layer, and to
+characterize exactly when type--segregation is profitable and stable.
+
+% ======================================================================
+\section{Primitives}
+% ======================================================================
+
+\paragraph{Population.}
+There is a nonatomic continuum of tourists of two types $\theta \in \{H,L\}$, with total
+masses $\mH>0$ (rich) and $\mL>0$ (poor); write $M=\mH+\mL$. A type--$\theta$ tourist has
+gross value (budget, willingness to pay) $v_\theta>0$, with a strict value gap
+\begin{equation}
+\vH > \vL > 0, \qquad d \coloneqq \vH-\vL .
+\end{equation}
+Each tourist chooses one resort or an outside option normalized to utility $0$.
+
+\paragraph{Resorts.}
+There are $J\ge 2$ resorts, indexed $j\in\{1,\dots,J\}$, \emph{intrinsically identical}.
+Resort $j$ posts a price $p_j\ge 0$; marginal cost is normalized to $0$. Let $x_{\theta j}\ge0$
+be the mass of type $\theta$ at resort $j$ and $x_{\theta 0}\ge 0$ the mass taking the outside
+option, with adding--up $x_{\theta 0}+\sum_j x_{\theta j}=m_\theta$.
+
+\paragraph{Payoffs.}
+A type--$\theta$ tourist at resort $j$ obtains
+\begin{equation}
+u_{\theta j}(x,p) \;=\; v_\theta - p_j - c_\theta\!\big(x_{Hj},x_{Lj}\big),
+\label{eq:payoff}
+\end{equation}
+where the congestion / peer cost is linear in the composition,
+\begin{equation}
+\begin{pmatrix} c_H \\ c_L \end{pmatrix}
+=
+\begin{pmatrix} \aHH & \aHL \\ \aLH & \aLL \end{pmatrix}
+\begin{pmatrix} x_{Hj} \\ x_{Lj} \end{pmatrix},
+\qquad
+A=\begin{pmatrix}\aHH & \aHL\\ \aLH & \aLL\end{pmatrix}.
+\label{eq:congestion}
+\end{equation}
+The cartel maximizes joint profit $\Pi(p,x)=\sum_j p_j\,(x_{Hj}+x_{Lj})$ and may use transfers
+across resorts. Because resorts are identical, any asymmetric policy must be sustained by
+prices and the resulting composition, not by an exogenous quality difference.
+
+\begin{assumption}[Asymmetric peer externality]\label{ass:asym}
+The rich dislike crowding by the poor far more than the reverse, $\aHL \gg \aLH \ge 0$. The
+clean benchmark is the one--directional case $\aLH=0$. Own--type crowding is strictly positive,
+$\aHH,\aLL>0$, capturing physical congestion (lift lines, restaurants) and preventing
+degenerate concentration. The aspirational variant $\aLH<0$ is treated in
+Section~\ref{sec:discussion}.
+\end{assumption}
+
+% ======================================================================
+\section{Tourist equilibrium given prices}
+% ======================================================================
+
+Fix a price profile $\bm{p}=(p_1,\dots,p_J)$. Tourists are followers; resorts are leaders (a
+Stackelberg structure). Follower play is a population game.
+
+\begin{definition}[Wardrop--Nash equilibrium]\label{def:eq}
+A feasible allocation $x$ is an equilibrium given $\bm p$ if for each type $\theta$ there is a
+scalar $\bar u_\theta\ge 0$ such that
+\[
+x_{\theta j}>0 \Rightarrow u_{\theta j}(x,p)=\bar u_\theta,
+\qquad
+x_{\theta j}=0 \Rightarrow u_{\theta j}(x,p)\le \bar u_\theta,
+\qquad
+x_{\theta 0}>0 \Rightarrow \bar u_\theta=0.
+\]
+Each type uses only utility--maximizing resorts and takes the outside option only when no
+resort yields positive utility.
+\end{definition}
+
+\begin{remark}[Not a potential game in general]\label{rem:nopotential}
+Since tourists are nonatomic, a deviator treats resort loads as fixed; with continuous costs an
+equilibrium exists. The follower game admits an exact potential only when the cross--effects are
+symmetric, $\aHL=\aLH$; under Assumption~\ref{ass:asym} the matrix $A$ is asymmetric, so the
+game is \emph{not} a potential game and equilibria may be non--unique. We therefore work with
+explicit allocations and verify equilibrium by the inequalities of Definition~\ref{def:eq}
+rather than by appeal to a potential. When all resorts in a tier share price and composition
+and $\aHH,\aLL>0$, own--type congestion equalizes loads within the tier.
+\end{remark}
+
+% ======================================================================
+\section{Baseline: symmetric pricing (pooling)}\label{sec:pool}
+% ======================================================================
+
+Suppose every resort posts the same price $p$. The symmetric pooled allocation
+\begin{equation}
+x_{Hj}^{P}=\frac{\mH}{J},\qquad x_{Lj}^{P}=\frac{\mL}{J}\qquad\text{for all }j
+\end{equation}
+is an equilibrium whenever both types participate. Define each type's net (congestion--adjusted)
+willingness to pay:
+\begin{equation}
+\wHP = \vH - \frac{\aHH\mH+\aHL\mL}{J},
+\qquad
+\wLP = \vL - \frac{\aLH\mH+\aLL\mL}{J}.
+\label{eq:wpool}
+\end{equation}
+A single posted price cannot separate types. Assuming $\min\{\wHP,\wLP\}\ge0$, the largest
+common price keeping both types in the market is $p^{P}=\min\{\wHP,\wLP\}$, so
+\begin{equation}
+\boxed{\ \PiP = M\,p^{P} = M\min\{\wHP,\wLP\}. \ }
+\label{eq:Ppool}
+\end{equation}
+Total tourist rent under pooling and total surplus are
+\begin{align}
+\TP &= \mH(\wHP-p^{P})+\mL(\wLP-p^{P}) \;\ge 0, \label{eq:Tpool}\\
+\WP &= \mH\vH+\mL\vL-\frac{\aHH\mH^2+(\aHL+\aLH)\mH\mL+\aLL\mL^2}{J},
+\end{align}
+and since marginal cost is zero, $\PiP=\WP-\TP$. A common price leaves a positive rent to the
+type whose net WTP is not the minimum; this recovered rent reappears below. (Equation
+\eqref{eq:Ppool} is the pooling benchmark; a symmetric cartel could instead \emph{exclude} one
+type, e.g.\ serve only $H$ at profit $\mH(\vH-\aHH\mH/J)$ if that price also deters $L$. A claim
+that sorting beats \emph{every} symmetric policy must also dominate these exclusion branches; we
+return to this in Remark~\ref{rem:exclusion}.)
+
+% ======================================================================
+\section{Coordinated differentiation (separating regime)}\label{sec:sort}
+% ======================================================================
+
+The cartel designates $K\in\{1,\dots,J-1\}$ resorts as \emph{premium} at price $p_H$ and
+$J-K$ resorts as \emph{budget} at price $p_L$. The intended separating allocation is all rich
+at premium resorts and all poor at budget resorts, evenly split within each tier:
+\begin{equation}
+\text{premium: } x_H=\frac{\mH}{K},\ x_L=0;
+\qquad
+\text{budget: } x_H=0,\ x_L=\frac{\mL}{J-K}.
+\end{equation}
+Define the four congestion magnitudes
+\begin{equation}
+h_K=\frac{\aHH\mH}{K},\quad
+\ell_K=\frac{\aLL\mL}{J-K},\quad
+z^{HL}_K=\frac{\aHL\mL}{J-K},\quad
+z^{LH}_K=\frac{\aLH\mH}{K},
+\end{equation}
+where $h_K,\ell_K$ are on--path own--type costs, $z^{HL}_K$ is the cost a rich deviator would
+incur at a budget resort, and $z^{LH}_K$ the cost a poor deviator would incur at a premium
+resort.
+
+\subsection{Incentive and participation constraints}
+
+A deviation is infinitesimal, so it does not change a resort's composition. The separating
+allocation is an equilibrium iff
+\begin{alignat}{2}
+&\text{(IC--H)} &\qquad p_H+h_K &\le p_L+z^{HL}_K, \label{eq:ICH}\\
+&\text{(IC--L)} &\qquad p_L+\ell_K &\le p_H+z^{LH}_K, \label{eq:ICL}\\
+&\text{(IR--H)} &\qquad p_H+h_K &\le \vH, \label{eq:IRH}\\
+&\text{(IR--L)} &\qquad p_L+\ell_K &\le \vL. \label{eq:IRL}
+\end{alignat}
+Define the \emph{generalized prices} (price plus own congestion borne) and two key gaps,
+\begin{equation}
+q_H=p_H+h_K,\quad q_L=p_L+\ell_K,
+\qquad
+A_K=z^{HL}_K-\ell_K=\frac{(\aHL-\aLL)\mL}{J-K},
+\qquad
+B_K=h_K-z^{LH}_K=\frac{(\aHH-\aLH)\mH}{K}.
+\end{equation}
+The two incentive constraints collapse to the clean sandwich
+\begin{equation}
+\boxed{\ B_K \ \le\ q_H-q_L \ \le\ A_K. \ }
+\label{eq:sandwich}
+\end{equation}
+$A_K$ is the largest generalized premium the rich will accept over the budget tier; a larger
+$\aHL$ raises $A_K$, relaxing \eqref{eq:ICH}. $B_K$ is the smallest premium that keeps the poor
+out. Price--only separation for a given $K$ is feasible iff
+\begin{equation}
+A_K\ge B_K
+\qquad\Longleftrightarrow\qquad
+z^{HL}_K+z^{LH}_K\ \ge\ h_K+\ell_K .
+\label{eq:feasible}
+\end{equation}
+
+\begin{remark}[The overlooked constraint]\label{rem:ICL}
+Strong one--way aversion (large $\aHL$) helps deter the \emph{rich} from the budget tier
+through $A_K$, but it does nothing for $B_K$. Worse, the asymmetry works against
+\eqref{eq:ICL}: a \emph{small} $\aLH$ \emph{raises} $B_K=(\aHH-\aLH)\mH/K$, so the poor find
+the premium tier relatively attractive and must be priced out. One--way aversion is therefore
+helpful through $\aHL$ but not mechanically helpful for every constraint; feasibility requires
+checking \eqref{eq:feasible}, not merely a large $\aHL$.
+\end{remark}
+
+\subsection{Optimal screening prices for a fixed split}
+
+\begin{proposition}[Optimal separating prices]\label{prop:prices}
+Fix an \emph{admissible} $K$ (one with $A_K\ge B_K$ and nonnegative prices below). The
+joint--profit--maximizing generalized prices are
+\begin{equation}
+(q_H^\star,q_L^\star)=
+\begin{cases}
+(\vL+A_K,\ \vL), & d>A_K,\\[2pt]
+(\vH,\ \vL), & B_K\le d\le A_K,\\[2pt]
+(\vH,\ \vH-B_K), & d<B_K,
+\end{cases}
+\qquad
+p_H^\star=q_H^\star-h_K,\quad p_L^\star=q_L^\star-\ell_K,
+\end{equation}
+and the resulting total tourist (screening) rent is
+\begin{equation}
+\boxed{\ R_K=\mH\,\pos{d-A_K}+\mL\,\pos{B_K-d}, \qquad \pos{z}=\max\{z,0\}. \ }
+\label{eq:rent}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For fixed $K$ the costs and quantities are constants, so the cartel maximizes
+$\mH(q_H-h_K)+\mL(q_L-\ell_K)$ subject to $q_H\le\vH$, $q_L\le\vL$ and \eqref{eq:sandwich}. The
+objective increases in both generalized prices, so push each up to its binding constraint. If
+$d>A_K$ the two IR constraints cannot both bind (their gap $d$ exceeds the allowed $A_K$), so
+$q_L=\vL$ and \eqref{eq:ICH} binds at $q_H=\vL+A_K$. If $B_K\le d\le A_K$ both IR bind,
+$(q_H,q_L)=(\vH,\vL)$. If $d<B_K$ then $q_H=\vH$ and \eqref{eq:ICL} binds at $q_L=\vH-B_K$.
+Tourist rent is $\sum_\theta m_\theta(v_\theta-q_\theta^\star)$, which gives \eqref{eq:rent}.
+\end{proof}
+
+\begin{lemma}[The asymmetry is the screening device]\label{lem:screen}
+In the middle (full--extraction) case $B_K\le d\le A_K$ the differentiated prices implement
+exactly what type--contingent pricing would: resort choice reveals type and the cartel extracts
+all surplus, $R_K=0$. The high type's information rent is $\mH\pos{d-A_K}$, which falls one for
+one as $\aHL$ rises (through $A_K$) until it vanishes. This is the precise sense in which
+asymmetric peer congestion is a screening instrument.
+\end{lemma}
+
+\subsection{Sorted surplus and profit}
+With cross--type contact eliminated, total surplus and profit are
+\begin{equation}
+\WS(K)=\mH\vH+\mL\vL-\frac{\aHH\mH^2}{K}-\frac{\aLL\mL^2}{J-K},
+\qquad
+\boxed{\ \PiS(K)=\WS(K)-R_K. \ }
+\label{eq:Psort}
+\end{equation}
+
+% ======================================================================
+\section{Main result: when does sorting beat pooling?}\label{sec:main}
+% ======================================================================
+
+The real--surplus gain from sorting is
+\begin{equation}
+\Delta W(K)=\WS(K)-\WP
+=\underbrace{\frac{(\aHL+\aLH)\mH\mL}{J}}_{\text{cross--type relief}}
+-\underbrace{\Big[\aHH\mH^2\big(\tfrac1K-\tfrac1J\big)+\aLL\mL^2\big(\tfrac1{J-K}-\tfrac1J\big)\Big]}_{\text{own--type concentration cost}} .
+\label{eq:dW}
+\end{equation}
+
+\begin{proposition}[Exact sorting--dominance condition]\label{prop:main}
+For any admissible $K$, coordinated sorting strictly raises joint profit over the symmetric
+pooling benchmark, $\PiS(K)>\PiP$, if and only if
+\begin{equation}
+\boxed{\ \Delta W(K) \;+\; \TP \;-\; R_K \;>\;0. \ }
+\label{eq:maincond}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+$\PiP=\WP-\TP$ from \eqref{eq:Ppool}--\eqref{eq:Tpool} and $\PiS(K)=\WS(K)-R_K$ from
+\eqref{eq:Psort}. Subtract: $\PiS(K)-\PiP=\big(\WS(K)-\WP\big)+\TP-R_K=\Delta W(K)+\TP-R_K$.
+\end{proof}
+
+\noindent Equation \eqref{eq:maincond} is transparent: sorting wins when the congestion relief
+plus the recovered pooling rent $\TP$ exceeds the own--type concentration cost plus the
+screening rent $R_K$ it must pay. The asymmetric term $\aHL$ enters \emph{twice}: directly in
+the relief term of $\Delta W$, and indirectly by shrinking $R_K$ through $A_K$
+(Lemma~\ref{lem:screen}). It is \emph{not} enough that $\aHL$ be large: a severe own--congestion
+($\aHH,\aLL$ large) or an infeasible split ($A_K<B_K$, Remark~\ref{rem:ICL}) can still defeat
+sorting.
+
+\subsection{Optimal number of premium resorts}
+
+Within the full--extraction region ($R_K=0$), only the concentration cost depends on $K$, so the
+cartel minimizes $C(K)=\aHH\mH^2/K+\aLL\mL^2/(J-K)$.
+
+\begin{corollary}[Optimal split and clean threshold]\label{cor:split}
+The interior minimizer is
+\begin{equation}
+\frac{K^\star}{J}=\frac{\sqrt{\aHH}\,\mH}{\sqrt{\aHH}\,\mH+\sqrt{\aLL}\,\mL},
+\qquad
+C(K^\star)=\frac{\big(\sqrt{\aHH}\,\mH+\sqrt{\aLL}\,\mL\big)^2}{J},
+\end{equation}
+rounded to the nearest admissible integer. If $K^\star$ lies in the full--extraction region
+($B_{K^\star}\le d\le A_{K^\star}$), then
+\begin{equation}
+\boxed{\ \PiS(K^\star)-\PiP=\frac{\big(\aHL+\aLH-2\sqrt{\aHH\,\aLL}\big)\,\mH\mL}{J}+\TP, \ }
+\end{equation}
+so sorting strictly dominates pooling iff that expression is positive. Comparing total
+\emph{surplus} (ignoring the rent transfer $\TP$) gives the especially clean criterion
+\begin{equation}
+\boxed{\ \aHL+\aLH \;>\; 2\sqrt{\aHH\,\aLL}. \ }
+\label{eq:surpluscond}
+\end{equation}
+\end{corollary}
+
+\noindent Under near one--way aversion ($\aLH\approx0$), a sufficiently large $\aHL$ alone
+satisfies \eqref{eq:surpluscond}. The extra $\TP\ge0$ shows the cartel can profit from sorting
+even when sorting slightly \emph{lowers} total surplus, because it also improves price
+discrimination.
+
+\begin{remark}[Dominating exclusion policies]\label{rem:exclusion}
+To claim sorting beats \emph{every} symmetric policy, not just pooling, one adds
+$\PiS(K)>\mH(\vH-\aHH\mH/J)$ and the analogous $L$--only inequality. These are easy to check
+numerically and hold whenever the served mass and value gap are large enough that excluding a
+whole type is wasteful.
+\end{remark}
+
+% ======================================================================
+\section{The role of the asymmetry}\label{sec:role}
+% ======================================================================
+
+The asymmetry has two distinct roles and one trap.
+\begin{enumerate}[label=(\alph*),leftmargin=2.2em]
+\item \textbf{Surplus source.} $\aHL$ enters the relief term $(\aHL+\aLH)\mH\mL/J$ in
+\eqref{eq:dW}. With $\aLH\approx0$, separating the rich from the poor removes a real loss for
+the rich without removing a corresponding benefit for the poor.
+\item \textbf{Screening technology.} $\aHL$ raises $A_K=(\aHL-\aLL)\mL/(J-K)$, relaxing the high
+type's incentive constraint \eqref{eq:ICH} and shrinking the rent $R_K$ in \eqref{eq:rent}. The
+budget tier, crowded with poor, is an unattractive outside option for the rich.
+\item \textbf{The countervailing trap.} A \emph{low} $\aLH$ \emph{raises}
+$B_K=(\aHH-\aLH)\mH/K$, the premium the cartel must charge to keep the poor out
+(Remark~\ref{rem:ICL}). If $B_K$ exceeds $A_K$ the separating menu is infeasible at any prices.
+So the very feature that makes the rich willing to pay can make the poor eager to follow, and
+both incentive bounds must be checked.
+\end{enumerate}
+
+% ======================================================================
+\section{What changes or breaks the result}\label{sec:discussion}
+% ======================================================================
+
+\paragraph{Symmetric externality ($\aHL=\aLH>0$).}
+Cross--type contact is mutually costly; sorting yields a larger surplus gain and both types
+weakly prefer separation. The mechanism is no longer elite avoidance but mutual segregation.
+The fully homogeneous case $\aHH=\aHL=\aLH=\aLL$ gives $A_K=B_K=0$ at the equal split: resort
+labels carry no screening content and any apparent gain vanishes once the rent is accounted.
+
+\paragraph{Aspirational poor ($\aLH<0$).}
+If the poor enjoy proximity to the rich, sorting destroys that benefit: the relief term
+$(\aHL+\aLH)\mH\mL/J$ shrinks and $B_K=(\aHH-\aLH)\mH/K$ rises, hurting sorting through both the
+surplus and the IC channels. For sufficiently negative $\aLH$, price--only separation can be
+infeasible or unprofitable even when the rich strongly dislike the poor. This is the empirically
+interesting ``see and be seen'' case.
+
+\paragraph{Large own--type congestion.}
+Sorting concentrates each type into fewer resorts. When $\aHH$ or $\aLL$ is large the
+concentration cost in \eqref{eq:dW} can exceed the cross--type relief; this is the central
+technological trade--off and is exactly criterion \eqref{eq:surpluscond}.
+
+\paragraph{Failure of price--only screening.}
+If $A_K<B_K$ for every $K$, no pair of posted prices supports full separation: the price needed
+to deter the poor pushes the rich to the budget tier. Partial mixing, exclusion, or a second
+instrument (capacity, branding, minimum spend) is then required.
+
+\paragraph{Cartel enforceability.}
+The analysis maximizes joint profit with transfers. Without transfers, premium and budget
+resorts earn different profits and may disagree on the policy. Without enforcement, a single
+resort may deviate to attract both types. The non--cooperative pricing game among resorts is a
+separate question; notably the asymmetric congestion is self--limiting there, since a premium
+resort that cuts price to add volume imports the poor and the very cross--congestion that
+repels its rich clientele.
+
+% ======================================================================
+\section{Dynamics and the wrong--equilibrium trap}\label{sec:dynamics}
+% ======================================================================
+
+The pooled allocation is an equilibrium whenever all resorts post one price and both types
+participate, \emph{even when} a sorted policy yields strictly higher profit and surplus. Since
+resorts are identical, moving from pooling to sorting requires a coordinated change in prices or
+expectations. Consider the within--type replicator dynamic
+$\dot y_{\theta j}=y_{\theta j}\,(u_{\theta j}-\bar u_\theta)$ with $y_{\theta j}=x_{\theta j}/m_\theta$;
+Wardrop equilibria are its rest points. Perturbing two equal--price resorts by moving masses
+$(\delta_H,\delta_L)$ from one to the other, the payoff gap for type $\theta$ is
+$u_{\theta 1}-u_{\theta 2}=-2(\alpha_{\theta H}\delta_H+\alpha_{\theta L}\delta_L)$, so the
+linearization is governed by $-\operatorname{diag}(\mH,\mL)\,A$. The pooled state is locally
+stable iff
+\begin{equation}
+\boxed{\ \aHH\,\aLL \;>\; \aHL\,\aLH. \ }
+\label{eq:stability}
+\end{equation}
+Under strong one--way aversion ($\aLH\approx0$) the right side is near zero, so pooling stays
+locally stable \emph{however large $\aHL$ is}, even though sorting is more profitable and, by
+\eqref{eq:surpluscond}, more efficient. This is a sharp wrong--equilibrium trap: unilateral
+tourist adjustment does not create the sorted outcome, and only a coordinated policy jump (price
+plus, if needed, capacity) crosses the basin boundary. A sorted state with \emph{strict}
+cross--tier incentives is locally resistant to invasion; when an IC bound binds it is only
+weakly resistant and small shocks can reintroduce mixing.
+
+% ======================================================================
+\section{Extensions}\label{sec:ext}
+% ======================================================================
+
+\paragraph{Capacity.}
+A cap $k_j$ changes equilibrium congestion and can ration the premium tier, repairing the
+invasion failure $A_K<B_K$; but a cap alone does not distinguish types, so it screens only when
+paired with a price (or auction, minimum spend, priority booking) that selects high WTP.
+
+\paragraph{Branding and amenities.}
+If resort $j$ chooses a brand $b_j$ shifting gross values to $v_\theta(b_j)$, a premium brand
+supports sorting by raising the value gap $d=\vH(b_j)-\vL(b_j)$, moving the economy into the
+full--extraction window $B_K\le d\le A_K$.
+
+\paragraph{Hard budgets.}
+If the poor face a hard budget $\bar p_L$, then $p_H>\bar p_L$ mechanically blocks invasion,
+relaxing or removing \eqref{eq:ICL}. The present model is more demanding: separation works
+through preferences, not an exogenous inability to pay.
+
+\paragraph{More than two types.}
+With a continuum of types resorts form a menu of (price, peer--environment) pairs; the two--type
+sandwich \eqref{eq:sandwich} becomes adjacent--type incentive constraints, and a single--crossing
+condition on type--specific peer costs delivers monotone sorting.
+
+% ======================================================================
+\section{Conclusion}
+% ======================================================================
+
+Identical resorts, a heterogeneous population, and an asymmetric peer externality
+($\aHL\gg\aLH$) suffice to make coordinated price differentiation strictly more profitable than
+symmetric pricing, under the exact condition $\Delta W(K)+\TP-R_K>0$ of
+Proposition~\ref{prop:main}. Segregation removes the congestion the rich suffer from the poor;
+because the poor are nearly indifferent the relief is largely pure surplus, which the cartel
+captures by charging the rich a premium. The asymmetry's deeper role is as a screening
+technology: $\aHL$ relaxes the high type's incentive constraint and shrinks its information
+rent. Yet asymmetry is not a free lunch. A low $\aLH$ makes the poor harder to exclude, the
+concentration cost can dominate, and (criterion \eqref{eq:stability}) the profitable sorted
+outcome can be dynamically unreachable from pooling without coordinated policy, the
+wrong--equilibrium trap. At the optimal split the efficiency of sorting reduces to the single
+inequality $\aHL+\aLH>2\sqrt{\aHH\aLL}$.
+
+\appendix
+\section{Notation}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Symbol & Meaning \\
+\midrule
+$H,L$ & rich/high--value and poor/low--value tourist types \\
+$\mH,\mL,\,M$ & mass of each type; total $M=\mH+\mL$ \\
+$\vH,\vL,\,d$ & gross values, $\vH>\vL$; value gap $d=\vH-\vL$ \\
+$J$ & number of identical resorts \\
+$K,\,J-K$ & number of premium and budget resorts \\
+$p_j$ & price posted by resort $j$ \\
+$x_{\theta j}$ & mass of type $\theta$ at resort $j$ \\
+$\aHH,\aLL$ & own--type (physical) congestion sensitivities \\
+$\aHL$ & rich aversion to poor crowding (large) \\
+$\aLH$ & poor aversion to rich crowding ($\approx0$, or $<0$ aspirational) \\
+$h_K,\ell_K$ & on--path own--type congestion costs \\
+$z^{HL}_K,z^{LH}_K$ & cross--tier deviation congestion costs \\
+$q_H,q_L$ & generalized prices, $q_\theta=p_\theta+(\text{own congestion})$ \\
+$A_K,B_K$ & upper / lower bound on the generalized premium $q_H-q_L$ \\
+$R_K$ & screening rent left to tourists under sorting \\
+$\TP$ & rent a single pooling price must leave \\
+$W^{\bullet},\Pi^{\bullet}$ & total surplus and joint (cartel) profit \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
