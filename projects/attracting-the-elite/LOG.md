@@ -2,6 +2,39 @@
 
 ---
 
+## 2026-06-15 -- First formal model: coordinated sorting under asymmetric peer congestion
+
+**What happened:** Wrote `model.md`, a self-contained model note answering the cartel
+question directly: J identical resorts, two tourist types (rich H, poor L) with linear
+composition-dependent congestion and the asymmetry $\alpha_{HL} \gg \alpha_{LH}$ (rich
+dislike poor crowding, poor are indifferent). Characterized (i) the tourist Wardrop
+equilibrium given prices, (ii) the symmetric pooling baseline, (iii) the coordinated
+separating regime (premium H-only vs budget L-only resorts).
+
+**Key results:**
+- Segregation strips the cross-congestion term $\alpha_{HL} m_L/J$ out of the rich type's
+  cost; since the poor are indifferent, that relief is pure surplus the cartel sells back.
+- The asymmetry has a *dual role*: it is the screening device. (IC-H) reads
+  $(\alpha_{HL}-\alpha_{LL})\,m_L/J_L \ge v_H - v_L$ -- the rich self-select into the
+  premium tier without an information rent precisely when their distaste for the poor is
+  strong relative to the value gap. When it fails, the cartel leaves a rent $R$.
+- Sorting-dominance proposition: $\Pi^{\text{sort}} > \Pi^{\text{pool}}$ iff the
+  value-discrimination gain $(v_H-v_L)m_H$ (plus the poor-externality term if
+  $\alpha_{LH}>0$) exceeds the own-type concentration cost. Optimal premium share
+  $J_H^\star/J = \sqrt{\alpha_{HH}}\,m_H / (\sqrt{\alpha_{HH}}\,m_H + \sqrt{\alpha_{LL}}\,m_L)$.
+- Discussed breakers: aspirational poor ($\alpha_{LH}<0$ flips a term against sorting),
+  (IC-L) invasion / wrong-equilibrium trap repaired by a capacity instrument, and
+  collusion-vs-competition (asymmetric congestion is self-limiting under competition too).
+
+**Note:** Intended to delegate the same task to Codex in parallel, but the Codex CLI is not
+installed on this machine (`command not found`); delegation skipped.
+
+**Next step:** Pressure-test the proposition (sign/derivation check), add the capacity
+instrument formally, and decide whether to push the competition (non-collusive) version as
+the cleaner publishable result.
+
+---
+
 ## 2026-06-15 -- Literature mapping and research question refinement
 
 **What happened:** Mapped the existing literature to locate the precise gap. Key finding: congestion games (Rosenthal 1973, Sandholm 2010) reduce the externality to scalar load or aggregate mass; club-good models (Buchanan 1965, Scotchmer 1994) capture composition preferences but are static and non-strategic on the destination side; Schelling (1971) has composition thresholds but no strategic destinations. None combine composition-dependent payoffs $u_i(n^H_\ell, n^L_\ell)$ with asymmetric cross-type derivatives and a strategic destination layer.
