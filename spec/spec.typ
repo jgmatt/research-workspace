@@ -3,13 +3,7 @@
 // ========================================================================
 //   This is YOUR standing reference: the definitions, models, and
 //   notation that hold across all of your research, independent of any
-//   single project. It is NOT needed for the hackathon. It is here for
-//   you to grow and explore on your own afterwards — a place to write
-//   down, precisely and once, the objects you reason about so that every
-//   project can build on the same foundation.
-//
-//   This is a SCAFFOLD. Fill it over time. Sections may stay "TBD" for a
-//   long while — that is fine. Keep notation consistent throughout.
+//   single project. This is a SCAFFOLD to be changed and edited over time.
 //
 //   Compile to PDF:   typst compile spec.typ
 //   Live preview:     typst watch spec.typ
@@ -53,22 +47,3 @@ _TBD_
 // Formal definitions of the core concepts in your field of work.
 // Number them so projects can refer back to them.
 *Definition 1.* _TBD_
-
-= Models
-// The standing models you reason about: their objects, equations, and
-// the assumptions baked into each. Project-independent.
-== Model A
-_TBD_
-
-= Assumptions
-// Standing assumptions you tend to make, and when they apply.
-+ _TBD_
-
-= Results and known facts
-// Established results you rely on (yours or from the literature, cited
-// to ../references/references.bib). The shared foundation projects build on.
-_TBD_
-
-= Open questions
-// Big-picture questions that span projects.
-- _TBD_
