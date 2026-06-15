@@ -14,7 +14,7 @@ When you have your group and topic, create a project under `projects/`. The quic
 - its own `CLAUDE.md` — the project definition (group, topic, methods, research question),
 - a `LOG.md` — an append-only record of changes and decisions.
 
-Then initialise git in the project folder and connect a remote (steps in `notes/starting-a-project.md`). Claude can run the `literature-review` skill to help you find a strong research question; write it into the project's `CLAUDE.md` once agreed.
+Then initialise git in the project folder and connect a remote (steps in `notes/starting-a-project.md`).
 
 ## What's in here
 
@@ -32,4 +32,3 @@ Then initialise git in the project folder and connect a remote (steps in `notes/
 - **CLAUDE.md** is read first every session — the workspace one is your profile, each project has its own.
 - **LOG.md** (per project) is an append-only diary of changes and decisions so nothing gets lost.
 - **spec/** is your standing, project-independent reference, separate from any single project.
-- There is intentionally **no STATE.md** anywhere.
