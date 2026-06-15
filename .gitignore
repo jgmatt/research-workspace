@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# typst build output (regenerate with: typst compile spec/spec.typ)
+# Comment the next line out if you want the compiled PDF tracked.
+# spec/spec.pdf
